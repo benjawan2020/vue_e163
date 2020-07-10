@@ -10,7 +10,7 @@
        </v-form>
      </v-card-text>
      <v-card-actions>
-        <nuxt-link to="/Register">
+        <nuxt-link to="/register">
             <v-btn color="success">REGISTER</v-btn> </nuxt-link>
              <v-spacer></v-spacer>
             <v-btn color="primary">LOGIN</v-btn>
