@@ -5,7 +5,7 @@
     <h2>Hello: {{ name }}</h2>
     <h2>age: {{ age }}</h2>
     <input type="text" :value="name">
-    <input type="text" v-model="name">
+    <input type="text" v-model="name"><br>
         <v-btn  color="success" dark button @click="doSave"> <v-icon color="pink">mdi-heart</v-icon> SAVE</v-btn><br><br>
         <v-btn  color="success" dark button @click="doMenu"> <v-icon  color="pink" dark>mdi-format-list-bulleted-square</v-icon> MENU</v-btn><br><br>
         <v-btn  color="success" dark button @click="doHome"> <v-icon color="pink">mdi-account-circle</v-icon> HOME</v-btn>

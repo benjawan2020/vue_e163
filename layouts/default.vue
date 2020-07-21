@@ -1,54 +1,78 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      clipped
-    >
-      <lang-selector />
-    </v-navigation-drawer>
+<v-app>
+  <v-card
+    height="568"
+  >
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-    <v-app-bar
-      app
-      clipped-left
-      dense
-      dark
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title class="mr-12 align-center">
-        <span class="title">CCOLLEGE</span>
-      </v-toolbar-title>
+      <v-toolbar-title>Title</v-toolbar-title>
+      <v-spacer></v-spacer>
+
+    <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+      
+    
+    <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-icon>mdi-dots-vertical</v-icon>
+          
     </v-app-bar>
 
-    <v-content>
-      <nuxt />
-    </v-content>
-  </v-app>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item>
+            <v-list-item-icon>
+              <nuxt-link to="/">
+              <v-icon>mdi-home</v-icon></nuxt-link>
+            </v-list-item-icon>
+            <v-list-item-title>index</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-icon>
+              <nuxt-link to="/login">
+              <v-icon>mdi-account</v-icon></nuxt-link>
+            </v-list-item-icon>
+            <v-list-item-title>Login</v-list-item-title>
+          </v-list-item>
+
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
+ <!-- ส่วนบนสุดของเนื้อหา-->
+        <v-content>
+            <nuxt/>
+        </v-content>
+
+  </v-card>
+
+  <v-footer app>
+    By: Benjawan Singhaampol <v-spacer></v-spacer> <v-icon>perm_phone_msg</v-icon>:088-422-7680
+    <!-- -->
+  </v-footer>
+  
+</v-app>
 </template>
-
 <script>
-import LangSelector from '~/components/lang-selector.vue'
-
-export default {
-  components: {
-    LangSelector,
-  },
-
-  computed: {
-    drawer: {
-      get() {
-        return this.$store.state.drawer
-      },
-      set(v) {
-        this.$store.commit('setDrawer', v)
-      },
-    },
-  }, // computed
-
-  watch: {
-    '$store.state.lang'() {
-      this.$i18n.locale = this.$store.state.lang
-    },
-  }, // watch
-}
+  export default {
+    data: () => ({
+      drawer: false,
+    }),
+  }
 </script>

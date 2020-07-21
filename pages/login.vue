@@ -1,7 +1,13 @@
 <template>
-   <v-card color="deep-purple darken-3">
+    <v-card
+    color="blue darken-4"
+    dark
+    height="400"
+    width="500"
+    class="mx-auto"
+  >
       <center>
-        <v-icon size="120" color="yellow">grade</v-icon>
+        <v-icon size="120">person</v-icon>
         <h1>Login</h1>
       </center>
 
