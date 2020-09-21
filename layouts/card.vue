@@ -1,5 +1,19 @@
 <template>
-    <v-app style="background: #000;">
+    <v-app class="bg1">
+         <v-system-bar
+          color="orange"
+          :height="height"
+          :lights-out="lightsOut"
+          :window="window"
+        >
+          <v-icon>mdi-gmail</v-icon>
+          <span>10 unread emails</span>
+          <v-spacer></v-spacer>
+          <v-icon>mdi-wifi-strength-4</v-icon>
+          <v-icon>mdi-signal-cellular-outline</v-icon>
+          <v-icon>mdi-battery</v-icon>
+          <span>13:30</span>
+        </v-system-bar>
 
       <v-navigation-drawer
       v-model="drawer"
@@ -43,10 +57,10 @@
 
     <div>
       <v-app-bar
-      color="deep-purple accent-4"
+      style="background: linear-gradient(to bottom left, #49c1b7 0%, #59c16c 80%);"
       dense
       dark
-    >
+      >
   
     <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -146,3 +160,12 @@ export default {
   }, // watch
 }
 </script>
+</script>
+<style scoped>
+  .bg1 {
+    background: linear-gradient(to bottom left, #59c16c 0%, #49c1b7 90%);
+    padding-bottom: auto;
+    padding-top: auto;
+  }
+  
+</style>

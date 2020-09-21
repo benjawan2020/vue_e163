@@ -2,25 +2,28 @@
     <v-card
     color="blue darken-4"
     dark
-    height="400"
+    height="450"
     width="500"
-    class="teal lighten-1"
+    class="mx-auto"
   >
       <center>
-        <v-icon size="120">account_balance</v-icon><br>
-        <font Face="TH SarabunPSK" style="font-size: 15px;">อยากทราบว่า School_id 1321016101 ชื่อวิทยาลัยอะไร</font>
+        <v-icon size="120">person</v-icon>
+        <h1>ข้อ1</h1>
+        <br>
       </center>
 
 
      <v-card-text>
        <v-form>
-         <v-text-field  v-model="id" prepend-icon="mdi-account-circle" label="กรุณากรอกรหัสวิทยาลัย" />
+         <v-text-field  v-model="school_id" prepend-icon="mdi-account-circle" label="รหัสสถานศึกษา" />
+         <v-text-field  v-model="school" prepend-icon="mdi-account-circle" label="ชื่อสถานศึกษา" />
+        
        </v-form>
      </v-card-text>
 
      <v-card-actions>
              <v-spacer></v-spacer>
-            <v-btn rounded color="warning" dark  @click="form1">ค้นหา</v-btn>
+            <v-btn color="primary" @click="doSave">LOGIN</v-btn>
      </v-card-actions>
 
    </v-card>
@@ -31,17 +34,24 @@ export default {
   data () {
     return {
       showPassword: false,
-      id: '',
+      school_id:'',
+      school:'',
+      user: '',
+      password: '',
+      GPA:''
     }
   },
   methods:{
-   async form1(){
-      console.log("form1")
-      console.log("user:", this.id)
+   async doSave(){
+      console.log("do save")
+      console.log("user:", this.user)
+      console.log("password:", this.password)
       //this.$router.push('/register')
-      let res = await fetch('http://localhost:7001/form1?id='+this.id)
+      let res = await fetch('http://localhost:7001/list?school_id='+this.school_id)
       let data = await res.json()
-    }
+      console.log('data=',data.rows[0].school_name)
+      this.school= data.rows[0].school_name
+    },
   },
 }
 </script>

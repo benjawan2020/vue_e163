@@ -2,46 +2,48 @@
     <v-card
     color="blue darken-4"
     dark
-    height="400"
+    height="450"
     width="500"
-    class="teal lighten-1"
+    class="mx-auto"
   >
       <center>
-        <v-icon size="120">account_balance</v-icon><br>
-        <font Face="TH SarabunPSK" style="font-size: 15px;">แสดงนักศึกษาทุกวิทยาลัยที่มีผลการเรียน GPA น้อยกว่า 3.50</font>
+        <v-icon size="120">person</v-icon>
+        <h1>ข้อ5</h1>
+        <br>
       </center>
 
 
      <v-card-text>
        <v-form>
-         <v-text-field  v-model="id" prepend-icon="mdi-account-circle" label="กรุณากรอกรหัสนักศึกษา" />
+         <v-text-field  v-model="school_id" prepend-icon="mdi-account-circle" label="รหัสสถานศึกษา" />
+         <v-text-field  v-model="gpa" prepend-icon="mdi-account-circle" label="GPA" />
+        
        </v-form>
      </v-card-text>
 
      <v-card-actions>
              <v-spacer></v-spacer>
-            <v-btn rounded color="success" dark  @click="form5">ค้นหา</v-btn>
+            <v-btn color="primary" @click="form5">LOGIN</v-btn>
      </v-card-actions>
 
    </v-card>
 </template>
 <script>
 export default {
-  name: 'App',
-  data () {
+  name: "App",
+  data() {
     return {
       showPassword: false,
-      id: '',
-    }
+      school_id: "",
+      gpa: "",
+    };
   },
-  methods:{
-   async form5(){
-      console.log("form5")
-      console.log("user:", this.id)
-      //this.$router.push('/register')
-      let res = await fetch('http://localhost:7001/form5?id='+this.id)
-      let data = await res.json()
-    }
+  methods: {
+    async form5() {
+      console.log("form5");
+      let res = await fetch("http://localhost:7001/form5?school_id=" +this.school_id +"&gpa=" +this.gpa);
+      let data = await res.json();
+    },
   },
-}
+};
 </script>

@@ -51,7 +51,7 @@
     methods: {
         async init_load(){
         console.log("welcome")
-         let res = await fetch("http://localhost:7001/list?user=");
+        let res = await fetch('http://localhost:7001/list?user='+this.user)
         let data = await res.json();
         console.log('data=',data.rows[0].GPA);
         this.gpa=data.rows[0].GPA;
